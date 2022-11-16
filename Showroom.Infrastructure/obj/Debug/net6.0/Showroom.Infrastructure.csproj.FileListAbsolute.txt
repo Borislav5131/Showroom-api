@@ -1,0 +1,12 @@
+C:\D)\ПУ\Курс 2\1st Semester\Web programming 2\showroom-api\Showroom.Infrastructure\bin\Debug\net6.0\Showroom.Infrastructure.deps.json
+C:\D)\ПУ\Курс 2\1st Semester\Web programming 2\showroom-api\Showroom.Infrastructure\bin\Debug\net6.0\Showroom.Infrastructure.dll
+C:\D)\ПУ\Курс 2\1st Semester\Web programming 2\showroom-api\Showroom.Infrastructure\bin\Debug\net6.0\Showroom.Infrastructure.pdb
+C:\D)\ПУ\Курс 2\1st Semester\Web programming 2\showroom-api\Showroom.Infrastructure\obj\Debug\net6.0\Showroom.Infrastructure.csproj.AssemblyReference.cache
+C:\D)\ПУ\Курс 2\1st Semester\Web programming 2\showroom-api\Showroom.Infrastructure\obj\Debug\net6.0\Showroom.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\D)\ПУ\Курс 2\1st Semester\Web programming 2\showroom-api\Showroom.Infrastructure\obj\Debug\net6.0\Showroom.Infrastructure.AssemblyInfoInputs.cache
+C:\D)\ПУ\Курс 2\1st Semester\Web programming 2\showroom-api\Showroom.Infrastructure\obj\Debug\net6.0\Showroom.Infrastructure.AssemblyInfo.cs
+C:\D)\ПУ\Курс 2\1st Semester\Web programming 2\showroom-api\Showroom.Infrastructure\obj\Debug\net6.0\Showroom.Infrastructure.csproj.CoreCompileInputs.cache
+C:\D)\ПУ\Курс 2\1st Semester\Web programming 2\showroom-api\Showroom.Infrastructure\obj\Debug\net6.0\Showroom.Infrastructure.dll
+C:\D)\ПУ\Курс 2\1st Semester\Web programming 2\showroom-api\Showroom.Infrastructure\obj\Debug\net6.0\refint\Showroom.Infrastructure.dll
+C:\D)\ПУ\Курс 2\1st Semester\Web programming 2\showroom-api\Showroom.Infrastructure\obj\Debug\net6.0\Showroom.Infrastructure.pdb
+C:\D)\ПУ\Курс 2\1st Semester\Web programming 2\showroom-api\Showroom.Infrastructure\obj\Debug\net6.0\ref\Showroom.Infrastructure.dll

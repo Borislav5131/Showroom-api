@@ -2,7 +2,6 @@
 using Showroom.Core.Repository;
 using Showroom.Core.ViewModels.Cars;
 using Showroom.Core.ViewModels.Showrooms;
-using Showroom.Infrastructure.Data.Entities;
 
 namespace Showroom.Core.Services
 {
