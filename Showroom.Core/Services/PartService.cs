@@ -1,5 +1,6 @@
 ﻿using Showroom.Core.Interfaces;
 using Showroom.Core.Repository;
+using Showroom.Core.ViewModels.Cars;
 using Showroom.Core.ViewModels.Parts;
 using Showroom.Infrastructure.Data.Entities;
 
@@ -56,6 +57,33 @@ namespace Showroom.Core.Services
             return (added, error);
         }
 
+        public (bool isEdit, string error) Edit(EditPartModel model)
+        {
+            bool isEdit = false;
+            string error = null;
+
+            var part = GetPartById(model.Id);
+
+            if (part == null)
+            {
+                return (isEdit, error = "Invalid operation");
+            }
+
+            part.Name = model.Name;
+
+            try
+            {
+                _repo.SaveChanges();
+                isEdit = true;
+            }
+            catch (Exception e)
+            {
+                error = "Invalid operation";
+            }
+
+            return (isEdit, error);
+        }
+
         public bool Delete(Guid partId)
         {
             var part = GetPartById(partId);
@@ -89,5 +117,15 @@ namespace Showroom.Core.Services
 
             return true;
         }
+
+        public EditPartModel GetDetailsOfPart(Guid partId)
+            => _repo.All<Part>()
+                .Where(p => p.Id == partId)
+                .Select(p => new EditPartModel()
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                })
+                .First();
     }
 }

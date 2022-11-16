@@ -27,6 +27,7 @@ namespace Showroom.Controllers
         public ActionResult Create() => View();
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(CreatePartFormModel model)
         {
             if (!ModelState.IsValid)
@@ -43,6 +44,33 @@ namespace Showroom.Controllers
             }
 
             return Redirect("/Parts/All");
+        }
+
+        [HttpGet]
+        public ActionResult Edit(Guid id)
+        {
+            var model = _partService.GetDetailsOfPart(id);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(EditPartModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var (isEdit, error) = _partService.Edit(model);
+
+            if (!isEdit)
+            {
+                return View("Error", new ErrorViewModel() { ErrorMessage = error });
+            }
+
+            return Redirect($"/Parts/Edit/{model.Id}");
         }
 
         [HttpGet]

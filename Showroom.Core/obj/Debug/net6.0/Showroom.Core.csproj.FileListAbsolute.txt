@@ -1,0 +1,15 @@
+C:\D)\ПУ\Курс 2\1st Semester\Web programming 2\showroom-api\Showroom.Core\bin\Debug\net6.0\Showroom.Core.deps.json
+C:\D)\ПУ\Курс 2\1st Semester\Web programming 2\showroom-api\Showroom.Core\bin\Debug\net6.0\Showroom.Core.dll
+C:\D)\ПУ\Курс 2\1st Semester\Web programming 2\showroom-api\Showroom.Core\bin\Debug\net6.0\Showroom.Core.pdb
+C:\D)\ПУ\Курс 2\1st Semester\Web programming 2\showroom-api\Showroom.Core\bin\Debug\net6.0\Showroom.Infrastructure.dll
+C:\D)\ПУ\Курс 2\1st Semester\Web programming 2\showroom-api\Showroom.Core\bin\Debug\net6.0\Showroom.Infrastructure.pdb
+C:\D)\ПУ\Курс 2\1st Semester\Web programming 2\showroom-api\Showroom.Core\obj\Debug\net6.0\Showroom.Core.csproj.AssemblyReference.cache
+C:\D)\ПУ\Курс 2\1st Semester\Web programming 2\showroom-api\Showroom.Core\obj\Debug\net6.0\Showroom.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\D)\ПУ\Курс 2\1st Semester\Web programming 2\showroom-api\Showroom.Core\obj\Debug\net6.0\Showroom.Core.AssemblyInfoInputs.cache
+C:\D)\ПУ\Курс 2\1st Semester\Web programming 2\showroom-api\Showroom.Core\obj\Debug\net6.0\Showroom.Core.AssemblyInfo.cs
+C:\D)\ПУ\Курс 2\1st Semester\Web programming 2\showroom-api\Showroom.Core\obj\Debug\net6.0\Showroom.Core.csproj.CoreCompileInputs.cache
+C:\D)\ПУ\Курс 2\1st Semester\Web programming 2\showroom-api\Showroom.Core\obj\Debug\net6.0\Showroom.Core.csproj.CopyComplete
+C:\D)\ПУ\Курс 2\1st Semester\Web programming 2\showroom-api\Showroom.Core\obj\Debug\net6.0\Showroom.Core.dll
+C:\D)\ПУ\Курс 2\1st Semester\Web programming 2\showroom-api\Showroom.Core\obj\Debug\net6.0\refint\Showroom.Core.dll
+C:\D)\ПУ\Курс 2\1st Semester\Web programming 2\showroom-api\Showroom.Core\obj\Debug\net6.0\Showroom.Core.pdb
+C:\D)\ПУ\Курс 2\1st Semester\Web programming 2\showroom-api\Showroom.Core\obj\Debug\net6.0\ref\Showroom.Core.dll
