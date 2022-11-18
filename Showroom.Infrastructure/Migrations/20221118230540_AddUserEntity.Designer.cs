@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Showroom.Infrastructure.Data;
 
@@ -11,9 +12,10 @@ using Showroom.Infrastructure.Data;
 namespace Showroom.Infrastructure.Migrations
 {
     [DbContext(typeof(ShowroomDbContext))]
-    partial class ShowroomDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221118230540_AddUserEntity")]
+    partial class AddUserEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -123,16 +125,6 @@ namespace Showroom.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("c910087a-0c28-43dd-b8b9-a9470f081c93"),
-                            FirstName = "ADMIN",
-                            LastName = "ADMINOV",
-                            Password = "123456",
-                            Username = "admin"
-                        });
                 });
 
             modelBuilder.Entity("CarPart", b =>

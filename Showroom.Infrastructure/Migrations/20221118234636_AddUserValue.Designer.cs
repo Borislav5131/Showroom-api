@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Showroom.Infrastructure.Data;
 
@@ -11,9 +12,10 @@ using Showroom.Infrastructure.Data;
 namespace Showroom.Infrastructure.Migrations
 {
     [DbContext(typeof(ShowroomDbContext))]
-    partial class ShowroomDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221118234636_AddUserValue")]
+    partial class AddUserValue
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

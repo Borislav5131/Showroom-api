@@ -1,10 +1,13 @@
-﻿namespace Showroom.Controllers
+﻿using Showroom.Filters;
+
+namespace Showroom.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
     using Showroom.Core.Interfaces;
     using Showroom.Core.ViewModels;
     using Showroom.Core.ViewModels.Showrooms;
 
+    [AuthenticationFilter]
     public class ShowroomsController : Controller
     {
         private readonly IShowroomService _showroomService;

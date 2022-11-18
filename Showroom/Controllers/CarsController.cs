@@ -1,12 +1,13 @@
 ﻿using Showroom.Core.Interfaces;
 using Showroom.Core.ViewModels;
 using Showroom.Core.ViewModels.Cars;
+using Showroom.Filters;
 
 namespace Showroom.Controllers
 {
-    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
 
+    [AuthenticationFilter]
     public class CarsController : Controller
     {
         private readonly ICarService _carService;
