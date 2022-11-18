@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSession();
 
 builder.Services.AddDbContext<ShowroomDbContext>();
 
@@ -14,6 +15,7 @@ builder.Services.AddTransient<IRepository, Repository>();
 builder.Services.AddTransient<ICarService, CarService>();
 builder.Services.AddTransient<IShowroomService, ShowroomService>();
 builder.Services.AddTransient<IPartService, PartService>();
+builder.Services.AddTransient<IUserService, UserService>();
 
 var app = builder.Build();
 
@@ -25,6 +27,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseSession();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
