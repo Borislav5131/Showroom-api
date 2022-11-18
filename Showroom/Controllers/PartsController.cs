@@ -1,11 +1,13 @@
 ﻿using Showroom.Core.Interfaces;
 using Showroom.Core.ViewModels;
 using Showroom.Core.ViewModels.Parts;
+using Showroom.Filters;
 
 namespace Showroom.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
 
+    [AuthenticationFilter]
     public class PartsController : Controller
     {
         private readonly IPartService _partService;
