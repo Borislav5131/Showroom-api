@@ -1,4 +1,5 @@
-﻿using Showroom.Core.Interfaces;
+﻿using NToastNotify;
+using Showroom.Core.Interfaces;
 using Showroom.Core.ViewModels;
 using Showroom.Core.ViewModels.Cars;
 using Showroom.Filters;
@@ -12,11 +13,13 @@ namespace Showroom.Controllers
     {
         private readonly ICarService _carService;
         private readonly IShowroomService _showroomService;
+        private readonly IToastNotification _toastNotification;
 
-        public CarsController(ICarService carService, IShowroomService showroomService)
+        public CarsController(ICarService carService, IShowroomService showroomService, IToastNotification toastNotification)
         {
             _carService = carService;
             _showroomService = showroomService;
+            _toastNotification = toastNotification;
         }
 
         [HttpGet]
@@ -49,6 +52,7 @@ namespace Showroom.Controllers
         {
             if (!ModelState.IsValid)
             {
+                _toastNotification.AddErrorToastMessage("Something wrong!");
                 return View(car);
             }
 
@@ -60,6 +64,7 @@ namespace Showroom.Controllers
                 return View(car);
             }
 
+            _toastNotification.AddSuccessToastMessage("Successfully created car!");
             return Redirect($"/Cars/All?showroomId={car.ShowroomId}");
         }
 
@@ -82,6 +87,7 @@ namespace Showroom.Controllers
         {
             if (!ModelState.IsValid)
             {
+                _toastNotification.AddErrorToastMessage("Something wrong!");
                 return View(car);
             }
 
@@ -92,6 +98,7 @@ namespace Showroom.Controllers
                 return View("Error", new ErrorViewModel() { ErrorMessage = error });
             }
 
+            _toastNotification.AddSuccessToastMessage("Successfully edit car!");
             return Redirect($"/Cars/Edit/{car.Id}");
         }
 
@@ -105,6 +112,7 @@ namespace Showroom.Controllers
                 return View("Error", new ErrorViewModel() {ErrorMessage = "Car can't be deleted!"});
             }
 
+            _toastNotification.AddSuccessToastMessage("Successfully deleted car!");
             return Redirect("/Showrooms/All");
         }
 

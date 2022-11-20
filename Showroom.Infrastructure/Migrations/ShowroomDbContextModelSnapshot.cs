@@ -127,7 +127,7 @@ namespace Showroom.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("c910087a-0c28-43dd-b8b9-a9470f081c93"),
+                            Id = new Guid("84740d7f-2011-4f3d-a012-41a335fb0b4e"),
                             FirstName = "ADMIN",
                             LastName = "ADMINOV",
                             Password = "123456",
