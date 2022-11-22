@@ -1,4 +1,5 @@
-﻿using Showroom.Core.Interfaces;
+﻿using NToastNotify;
+using Showroom.Core.Interfaces;
 using Showroom.Core.ViewModels;
 using Showroom.Core.ViewModels.Parts;
 using Showroom.Filters;
@@ -11,10 +12,12 @@ namespace Showroom.Controllers
     public class PartsController : Controller
     {
         private readonly IPartService _partService;
+        private readonly IToastNotification _toastNotification;
 
-        public PartsController(IPartService partService)
+        public PartsController(IPartService partService, IToastNotification toastNotification)
         {
             _partService = partService;
+            _toastNotification = toastNotification;
         }
 
         [HttpGet]
@@ -34,6 +37,7 @@ namespace Showroom.Controllers
         {
             if (!ModelState.IsValid)
             {
+                _toastNotification.AddErrorToastMessage("Something wrong!");
                 return View(model);
             }
 
@@ -45,6 +49,7 @@ namespace Showroom.Controllers
                 return View();
             }
 
+            _toastNotification.AddSuccessToastMessage("Successfully created part!");
             return Redirect("/Parts/All");
         }
 
@@ -62,6 +67,7 @@ namespace Showroom.Controllers
         {
             if (!ModelState.IsValid)
             {
+                _toastNotification.AddErrorToastMessage("Something wrong!");
                 return View(model);
             }
 
@@ -72,6 +78,7 @@ namespace Showroom.Controllers
                 return View("Error", new ErrorViewModel() { ErrorMessage = error });
             }
 
+            _toastNotification.AddSuccessToastMessage("Successfully edit part!");
             return Redirect($"/Parts/Edit/{model.Id}");
         }
 
@@ -85,6 +92,7 @@ namespace Showroom.Controllers
                 return View("Error", new ErrorViewModel() { ErrorMessage = "Part can't be deleted!" });
             }
 
+            _toastNotification.AddSuccessToastMessage("Successfully delete part!");
             return Redirect("/Parts/All");
         }
     }

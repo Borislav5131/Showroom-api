@@ -1,4 +1,5 @@
-﻿using Showroom.Filters;
+﻿using NToastNotify;
+using Showroom.Filters;
 
 namespace Showroom.Controllers
 {
@@ -11,10 +12,12 @@ namespace Showroom.Controllers
     public class ShowroomsController : Controller
     {
         private readonly IShowroomService _showroomService;
+        private readonly IToastNotification _toastNotification;
 
-        public ShowroomsController(IShowroomService showroomService)
+        public ShowroomsController(IShowroomService showroomService, IToastNotification toastNotification)
         {
             _showroomService = showroomService;
+            _toastNotification = toastNotification;
         }
 
         [HttpGet]
@@ -34,6 +37,7 @@ namespace Showroom.Controllers
         {
             if (!ModelState.IsValid)
             {
+                _toastNotification.AddErrorToastMessage("Something wrong!");
                 return View();
             }
 
@@ -45,6 +49,7 @@ namespace Showroom.Controllers
                 return View();
             }
 
+            _toastNotification.AddSuccessToastMessage("Successfully created showroom!");
             return Redirect("/Showrooms/All");
         }
 
@@ -62,6 +67,7 @@ namespace Showroom.Controllers
         {
             if (!ModelState.IsValid)
             {
+                _toastNotification.AddErrorToastMessage("Something wrong!");
                 return View(model);
             }
 
@@ -72,6 +78,7 @@ namespace Showroom.Controllers
                 return View("Error", new ErrorViewModel() {ErrorMessage = error});
             }
 
+            _toastNotification.AddSuccessToastMessage("Successfully edit showroom!");
             return Redirect($"/Showrooms/Edit/{model.Id}");
         }
 
@@ -85,6 +92,7 @@ namespace Showroom.Controllers
                 return View("Error", new ErrorViewModel() {ErrorMessage = "Showroom can't be deleted!"});
             }
 
+            _toastNotification.AddSuccessToastMessage("Successfully deleted showroom!");
             return Redirect("/Showrooms/All");
         }
     }

@@ -11,11 +11,13 @@ namespace Showroom.Core.Services
     {
         private readonly IRepository _repo;
         private readonly IShowroomService _showroomService;
+        private readonly IPartService _partService;
 
-        public CarService(IRepository repo, IShowroomService showroomService)
+        public CarService(IRepository repo, IShowroomService showroomService, IPartService partService)
         {
             _repo = repo;
             _showroomService = showroomService;
+            _partService = partService;
         }
 
         public List<CarViewModel> GetAllCars(Guid showroomId)
@@ -63,6 +65,19 @@ namespace Showroom.Core.Services
                 ShowroomId = model.ShowroomId,
                 Showroom = showroom,
             };
+
+            foreach (var modelPart in model.Parts)
+            {
+                if (modelPart != null)
+                {
+                    var part = _partService.GetPartById(Guid.Parse(modelPart));
+
+                    if (part != null)
+                    {
+                        c.Parts.Add(part);
+                    }
+                }
+            }
 
             showroom.Cars.Add(c);
 

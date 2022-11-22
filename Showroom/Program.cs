@@ -1,3 +1,4 @@
+using NToastNotify;
 using Showroom.Core.Interfaces;
 using Showroom.Core.Repository;
 using Showroom.Core.Services;
@@ -17,6 +18,12 @@ builder.Services.AddTransient<IShowroomService, ShowroomService>();
 builder.Services.AddTransient<IPartService, PartService>();
 builder.Services.AddTransient<IUserService, UserService>();
 
+builder.Services.AddRazorPages().AddNToastNotifyNoty(new NotyOptions
+{
+    ProgressBar = true,
+    Timeout = 5000
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -32,6 +39,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseNToastNotify();
 
 app.UseAuthorization();
 

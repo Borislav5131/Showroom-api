@@ -1,4 +1,6 @@
-﻿using Showroom.Core.Interfaces;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using NToastNotify;
+using Showroom.Core.Interfaces;
 using Showroom.Core.ViewModels;
 using Showroom.Core.ViewModels.Cars;
 using Showroom.Filters;
@@ -12,11 +14,15 @@ namespace Showroom.Controllers
     {
         private readonly ICarService _carService;
         private readonly IShowroomService _showroomService;
+        private readonly IToastNotification _toastNotification;
+        private readonly IPartService _partService;
 
-        public CarsController(ICarService carService, IShowroomService showroomService)
+        public CarsController(ICarService carService, IShowroomService showroomService, IToastNotification toastNotification, IPartService partService)
         {
             _carService = carService;
             _showroomService = showroomService;
+            _toastNotification = toastNotification;
+            _partService = partService;
         }
 
         [HttpGet]
@@ -35,6 +41,14 @@ namespace Showroom.Controllers
         {
             var model = _showroomService.CarCreateFormModel(showroomId);
 
+            var availableParts = _partService.GetAllParts();
+            ViewBag.Parts = new List<SelectListItem>();
+
+            foreach (var part in availableParts)
+            {
+                ViewBag.Parts.Add(new SelectListItem() {Value = part.Id.ToString(), Text = part.Name });
+            }
+
             if (model == null)
             {
                 return View("Error", new ErrorViewModel() {ErrorMessage = "Something get wrong!"});
@@ -49,6 +63,7 @@ namespace Showroom.Controllers
         {
             if (!ModelState.IsValid)
             {
+                _toastNotification.AddErrorToastMessage("Something wrong!");
                 return View(car);
             }
 
@@ -60,6 +75,7 @@ namespace Showroom.Controllers
                 return View(car);
             }
 
+            _toastNotification.AddSuccessToastMessage("Successfully created car!");
             return Redirect($"/Cars/All?showroomId={car.ShowroomId}");
         }
 
@@ -82,6 +98,7 @@ namespace Showroom.Controllers
         {
             if (!ModelState.IsValid)
             {
+                _toastNotification.AddErrorToastMessage("Something wrong!");
                 return View(car);
             }
 
@@ -92,6 +109,7 @@ namespace Showroom.Controllers
                 return View("Error", new ErrorViewModel() { ErrorMessage = error });
             }
 
+            _toastNotification.AddSuccessToastMessage("Successfully edit car!");
             return Redirect($"/Cars/Edit/{car.Id}");
         }
 
@@ -105,6 +123,7 @@ namespace Showroom.Controllers
                 return View("Error", new ErrorViewModel() {ErrorMessage = "Car can't be deleted!"});
             }
 
+            _toastNotification.AddSuccessToastMessage("Successfully deleted car!");
             return Redirect("/Showrooms/All");
         }
 
