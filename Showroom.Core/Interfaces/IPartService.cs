@@ -1,5 +1,4 @@
-﻿using Showroom.Core.ViewModels.Cars;
-using Showroom.Core.ViewModels.Parts;
+﻿using Showroom.Core.ViewModels.Parts;
 using Showroom.Infrastructure.Data.Entities;
 
 namespace Showroom.Core.Interfaces

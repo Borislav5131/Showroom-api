@@ -21,5 +21,7 @@ namespace Showroom.Core.ViewModels.Cars
 
         [Required]
         public string ShowroomName { get; set; }
+
+        public List<string> Parts { get; set; }
     }
 }

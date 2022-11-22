@@ -1,4 +1,5 @@
-﻿using NToastNotify;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using NToastNotify;
 using Showroom.Core.Interfaces;
 using Showroom.Core.ViewModels;
 using Showroom.Core.ViewModels.Cars;
@@ -14,12 +15,14 @@ namespace Showroom.Controllers
         private readonly ICarService _carService;
         private readonly IShowroomService _showroomService;
         private readonly IToastNotification _toastNotification;
+        private readonly IPartService _partService;
 
-        public CarsController(ICarService carService, IShowroomService showroomService, IToastNotification toastNotification)
+        public CarsController(ICarService carService, IShowroomService showroomService, IToastNotification toastNotification, IPartService partService)
         {
             _carService = carService;
             _showroomService = showroomService;
             _toastNotification = toastNotification;
+            _partService = partService;
         }
 
         [HttpGet]
@@ -37,6 +40,14 @@ namespace Showroom.Controllers
         public ActionResult Create(Guid showroomId)
         {
             var model = _showroomService.CarCreateFormModel(showroomId);
+
+            var availableParts = _partService.GetAllParts();
+            ViewBag.Parts = new List<SelectListItem>();
+
+            foreach (var part in availableParts)
+            {
+                ViewBag.Parts.Add(new SelectListItem() {Value = part.Id.ToString(), Text = part.Name });
+            }
 
             if (model == null)
             {
