@@ -4,14 +4,17 @@
     ViewData["Title"] = "Parts";
 }
 
-<h1>Parts</h1>
-<p>
-    <a asp-action="Create">Create New Part</a>
-</p>
-<table class="table">
+<div class="text-center">
+    <h1>Parts</h1>
+    <p>
+        <a role="button" class="btn btn-info" asp-action="Create">Create New Part</a>
+    </p>
+</div>
+
+<table class="table table-sm">
     <thead>
         <tr>
-            <th>
+            <th scope="col">
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             <th></th>
@@ -24,8 +27,8 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new {  id=item.Id  }) |
-                @Html.ActionLink("Delete", "Delete", new {  id=item.Id  })
+                <a type="button" class="btn btn-secondary btn-sm" href="@Url.ActionLink("Edit", "Parts", new {  id=item.Id  })">Edit</a>
+                <a type="button" class="btn btn-danger btn-sm" href="@Url.ActionLink("Delete", "Parts", new {  id=item.Id  })">Delete</a>
             </td>
         </tr>
 }

@@ -4,50 +4,49 @@
     ViewData["Title"] = "Create Car";
 }
 
-<h4>Create Car</h4>
-<hr />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Brand" class="control-label"></label>
-                <input asp-for="Brand" class="form-control" />
-                <input asp-for="ShowroomId" value="@Model.ShowroomId" type="hidden"/>
-                <input asp-for="ShowroomName" value="@Model.ShowroomName" type="hidden"/>
-                <span asp-validation-for="Brand" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Model" class="control-label"></label>
-                <input asp-for="Model" class="form-control" />
-                <span asp-validation-for="Model" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Year" class="control-label"></label>
-                <input asp-for="Year" class="form-control" />
-                <span asp-validation-for="Year" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Type" class="control-label"></label>
-                <input asp-for="Type" class="form-control" />
-                <span asp-validation-for="Type" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Parts" class="control-label"></label>
-                <select asp-for="Parts" class="form-control" asp-items="ViewBag.Parts" multiple>
-                    <option value="" selected>Empty</option>
-                </select>
-                <span asp-validation-for="Parts" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+    <div class="row align-items-center justify-content-center">
+        <div class="col-md-4">
+            <h4>Create Car</h4>
+            <hr />
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Brand" class="control-label"></label>
+                    <input asp-for="Brand" class="form-control"/>
+                    <input asp-for="ShowroomId" value="@Model.ShowroomId" type="hidden"/>
+                    <input asp-for="ShowroomName" value="@Model.ShowroomName" type="hidden"/>
+                    <span asp-validation-for="Brand" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Model" class="control-label"></label>
+                    <input asp-for="Model" class="form-control"/>
+                    <span asp-validation-for="Model" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Year" class="control-label"></label>
+                    <input asp-for="Year" class="form-control"/>
+                    <span asp-validation-for="Year" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Type" class="control-label"></label>
+                    <input asp-for="Type" class="form-control"/>
+                    <span asp-validation-for="Type" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Parts" class="control-label"></label>
+                    <select asp-for="Parts" class="form-control" asp-items="ViewBag.Parts" multiple>
+                        <option value="" selected>Empty</option>
+                    </select>
+                    <span asp-validation-for="Parts" class="text-danger"></span>
+                </div>
+                <div class="form-group m-3">
+                    <input type="submit" value="Create" class="btn btn-primary"/>
+                    <a role="button" class="btn btn-light" asp-action="All" asp-route-showroomId="@Model.ShowroomId">Back to Car List</a>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="All" asp-route-showroomId="@Model.ShowroomId">Back to Car List</a>
 </div>
 
 @section Scripts {

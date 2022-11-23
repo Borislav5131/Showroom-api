@@ -4,26 +4,29 @@
     ViewData["Title"] = "Cars";
 }
 
-<h1>Cars in showroom - @ViewData["ShowroomName"]</h1>
-<p>
-    <a asp-action="Create" asp-route-showroomId="@ViewData["ShowroomId"]">Create New Car</a>
-</p>
-<table class="table">
+<div class="text-center">
+    <h1>Cars in showroom - @ViewData["ShowroomName"]</h1>
+    <p>
+        <a role="button" class="btn btn-info" asp-action="Create" asp-route-showroomId="@ViewData["ShowroomId"]">Create New Car</a>
+    </p>
+</div>
+
+<table class="table table-sm">
     <thead>
         <tr>
-            <th>
+            <th scope="col">
                 @Html.DisplayNameFor(model => model.Brand)
             </th>
-            <th>
+            <th scope="col">
                 @Html.DisplayNameFor(model => model.Model)
             </th>
-            <th>
+            <th scope="col">
                 @Html.DisplayNameFor(model => model.Year)
             </th>
-            <th>
+            <th scope="col">
                 @Html.DisplayNameFor(model => model.Type)
             </th>
-            <th></th>
+            <th scope="col"></th>
         </tr>
     </thead>
     <tbody>
@@ -42,9 +45,9 @@
                 @Html.DisplayFor(modelItem => item.Type)
             </td>
             <td>
-                @Html.ActionLink("Parts", "CarParts", new {  id=item.Id  }) |
-                @Html.ActionLink("Edit", "Edit", new {id = item.Id}) |
-                @Html.ActionLink("Delete", "Delete", new {id = item.Id})
+                <a type="button" class="btn btn-primary btn-sm" href="@Url.ActionLink("CarParts", "Cars", new {  id=item.Id  })">Parts</a>
+                <a type="button" class="btn btn-secondary btn-sm" href="@Url.ActionLink("Edit", "Cars", new {  id=item.Id  })">Edit</a>
+                <a type="button" class="btn btn-danger btn-sm" href="@Url.ActionLink("Delete", "Cars", new {  id=item.Id  })">Delete</a>
             </td>
         </tr>
 }
