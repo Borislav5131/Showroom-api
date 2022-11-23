@@ -32,5 +32,7 @@ namespace Showroom.Infrastructure.Data.Entities
         public virtual Showroom Showroom { get; set; }
 
         public virtual List<Part> Parts { get; set; }
+
+        public byte[] Image { get; set; }
     }
 }

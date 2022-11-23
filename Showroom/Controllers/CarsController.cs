@@ -59,15 +59,20 @@ namespace Showroom.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CreateCarFormModel car)
+        public ActionResult Create(CreateCarFormModel car, IFormFile image)
         {
             if (!ModelState.IsValid)
             {
-                _toastNotification.AddErrorToastMessage("Something wrong!");
+                if (image == null)
+                {
+                    _toastNotification.AddErrorToastMessage("Image is required!");
+                }
+
                 return View(car);
             }
 
-            var (added, error) = _carService.Create(car);
+            var convertedImage = ConvertImageToBytes(image);
+            var (added, error) = _carService.Create(car, convertedImage);
 
             if (!added)
             {
@@ -133,6 +138,14 @@ namespace Showroom.Controllers
             var carParts = _carService.GetCarParts(id);
 
             return View(carParts);
+        }
+
+        private byte[] ConvertImageToBytes(IFormFile image)
+        {
+            var ms = new MemoryStream();
+            image.CopyTo(ms);
+
+            return ms.ToArray();
         }
     }
 }

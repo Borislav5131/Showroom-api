@@ -8,7 +8,7 @@ namespace Showroom.Core.Interfaces
     {
         List<CarViewModel> GetAllCars(Guid showroomId);
         Car? GetCarById(Guid carId);
-        (bool added, string error) Create(CreateCarFormModel model);
+        (bool added, string error) Create(CreateCarFormModel model, byte[] image);
         (bool isEdit, string error) Edit(EditCarModel model);
         bool Delete(Guid carId);
         EditCarModel GetDetailsOfCar(Guid carId);
