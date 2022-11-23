@@ -9,7 +9,7 @@
         <div class="col-md-4">
             <h4>Create Car</h4>
             <hr />
-            <form asp-action="Create">
+            <form asp-action="Create" enctype="multipart/form-data">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="Brand" class="control-label"></label>
@@ -39,6 +39,11 @@
                         <option value="" selected>Empty</option>
                     </select>
                     <span asp-validation-for="Parts" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Image</label>
+                    <br/>
+                    <input type="file" name="image" class="form-control-file" accept="image/png, image/jpeg"/>
                 </div>
                 <div class="form-group m-3">
                     <input type="submit" value="Create" class="btn btn-primary"/>

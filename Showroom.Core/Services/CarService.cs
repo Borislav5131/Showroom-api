@@ -31,6 +31,7 @@ namespace Showroom.Core.Services
                     Model = c.Model,
                     Type = c.Type,
                     Year = c.Year,
+                    Image = "data:image;base64," + Convert.ToBase64String(c.Image),
                 })
                 .ToList();
         }
@@ -39,7 +40,7 @@ namespace Showroom.Core.Services
             => _repo.All<Car>()
                 .FirstOrDefault(c => c.Id == carId);
 
-        public (bool added, string error) Create(CreateCarFormModel model)
+        public (bool added, string error) Create(CreateCarFormModel model, byte[] image)
         {
             bool added = false;
             string error = null;
@@ -47,6 +48,11 @@ namespace Showroom.Core.Services
             if (_repo.All<Car>().Any(c => c.Model == model.Model))
             {
                 return (added, error = "Car Model exist!");
+            }
+
+            if (image == null)
+            {
+                return (added, error = "Car Image is not correct!");
             }
 
             var showroom = _showroomService.GetShowroomById(model.ShowroomId);
@@ -64,6 +70,7 @@ namespace Showroom.Core.Services
                 Type = model.Type,
                 ShowroomId = model.ShowroomId,
                 Showroom = showroom,
+                Image = image,
             };
 
             foreach (var modelPart in model.Parts)

@@ -13,43 +13,47 @@
 
 <table class="table table-sm">
     <thead>
-        <tr>
-            <th scope="col">
-                @Html.DisplayNameFor(model => model.Brand)
-            </th>
-            <th scope="col">
-                @Html.DisplayNameFor(model => model.Model)
-            </th>
-            <th scope="col">
-                @Html.DisplayNameFor(model => model.Year)
-            </th>
-            <th scope="col">
-                @Html.DisplayNameFor(model => model.Type)
-            </th>
-            <th scope="col"></th>
-        </tr>
+    <tr>
+        <th scope="col"></th>
+        <th scope="col">
+            @Html.DisplayNameFor(model => model.Brand)
+        </th>
+        <th scope="col">
+            @Html.DisplayNameFor(model => model.Model)
+        </th>
+        <th scope="col">
+            @Html.DisplayNameFor(model => model.Year)
+        </th>
+        <th scope="col">
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th scope="col"></th>
+    </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Brand)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Model)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Year)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Type)
-            </td>
-            <td>
-                <a type="button" class="btn btn-primary btn-sm" href="@Url.ActionLink("CarParts", "Cars", new {  id=item.Id  })">Parts</a>
-                <a type="button" class="btn btn-secondary btn-sm" href="@Url.ActionLink("Edit", "Cars", new {  id=item.Id  })">Edit</a>
-                <a type="button" class="btn btn-danger btn-sm" href="@Url.ActionLink("Delete", "Cars", new {  id=item.Id  })">Delete</a>
-            </td>
-        </tr>
+    <tr>
+        <td class="text-center">
+            <img src="@item.Image" alt="" class="img-fluid" width="100"/>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Brand)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>
+            <a type="button" class="btn btn-primary btn-sm" href="@Url.ActionLink("CarParts", "Cars", new {id = item.Id})">Parts</a>
+            <a type="button" class="btn btn-secondary btn-sm" href="@Url.ActionLink("Edit", "Cars", new {id = item.Id})">Edit</a>
+            <a type="button" class="btn btn-danger btn-sm" href="@Url.ActionLink("Delete", "Cars", new {id = item.Id})">Delete</a>
+        </td>
+    </tr>
 }
     </tbody>
 </table>
