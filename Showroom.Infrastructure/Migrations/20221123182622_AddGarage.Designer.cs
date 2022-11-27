@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Showroom.Infrastructure.Data;
 
@@ -11,9 +12,10 @@ using Showroom.Infrastructure.Data;
 namespace Showroom.Infrastructure.Migrations
 {
     [DbContext(typeof(ShowroomDbContext))]
-    partial class ShowroomDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221123182622_AddGarage")]
+    partial class AddGarage
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,9 +49,6 @@ namespace Showroom.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("GarageId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<byte[]>("Image")
                         .IsRequired()
                         .HasColumnType("varbinary(max)");
@@ -70,34 +69,9 @@ namespace Showroom.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GarageId");
-
                     b.HasIndex("ShowroomId");
 
                     b.ToTable("Cars");
-                });
-
-            modelBuilder.Entity("Showroom.Infrastructure.Data.Entities.Garage", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Garages");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("157d1dc4-1948-4a26-9891-8a5f5e76c9af"),
-                            UserId = new Guid("895aa13a-4eaf-4382-9d93-a646b9cf6929")
-                        });
                 });
 
             modelBuilder.Entity("Showroom.Infrastructure.Data.Entities.Part", b =>
@@ -140,9 +114,6 @@ namespace Showroom.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("GarageId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -162,9 +133,8 @@ namespace Showroom.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("895aa13a-4eaf-4382-9d93-a646b9cf6929"),
+                            Id = new Guid("054cbe3b-1c97-461c-8430-abe4a24f3f6c"),
                             FirstName = "ADMIN",
-                            GarageId = new Guid("157d1dc4-1948-4a26-9891-8a5f5e76c9af"),
                             LastName = "ADMINOV",
                             Password = "123456",
                             Username = "admin"
@@ -188,10 +158,6 @@ namespace Showroom.Infrastructure.Migrations
 
             modelBuilder.Entity("Showroom.Infrastructure.Data.Entities.Car", b =>
                 {
-                    b.HasOne("Showroom.Infrastructure.Data.Entities.Garage", null)
-                        .WithMany("Cars")
-                        .HasForeignKey("GarageId");
-
                     b.HasOne("Showroom.Infrastructure.Data.Entities.Showroom", "Showroom")
                         .WithMany("Cars")
                         .HasForeignKey("ShowroomId")
@@ -199,22 +165,6 @@ namespace Showroom.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Showroom");
-                });
-
-            modelBuilder.Entity("Showroom.Infrastructure.Data.Entities.Garage", b =>
-                {
-                    b.HasOne("Showroom.Infrastructure.Data.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Showroom.Infrastructure.Data.Entities.Garage", b =>
-                {
-                    b.Navigation("Cars");
                 });
 
             modelBuilder.Entity("Showroom.Infrastructure.Data.Entities.Showroom", b =>

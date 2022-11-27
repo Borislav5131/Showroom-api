@@ -1,7 +1,40 @@
-﻿@{
+﻿@model Showroom.Core.ViewModels.Garages.GarageViewModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+<div class="container">
+    <div class="text-center">
+        <h1>Cars in your Garage</h1>
+    </div>
+    <div class="row">
+        @if(Model.Cars.Count == 0)
+        {
+            <div class="text-center">
+                <span>No cars in your Garage!</span>
+            </div>
+        }
+        @foreach(var car in Model.Cars)
+        {
+             <div class="card mb-3" style="max-width: 540px;">
+              <div class="row no-gutters">
+                <div class="col-md-4">
+                  <img src="@car.Image" class="card-img" alt="...">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">@car.Brand - @car.Model</h5>
+                    <p class="card-text">Type: @car.Type.</p>
+                    <p class="card-text"><small class="text-muted">Year: @car.Year</small></p>
+                    <div>
+                        <a type="button" class="btn btn-primary btn-sm" href="@Url.ActionLink("CarParts", "Cars", new {id = car.Id})">Parts</a>
+                        <a type="button" class="btn btn-danger btn-sm" href="@Url.ActionLink("RemoveCar", "Garages", new {garageId = @ViewData["GarageId"], carId = car.Id})">Remove From Garage</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>   
+        }
+    </div>
 </div>

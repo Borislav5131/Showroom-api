@@ -52,6 +52,7 @@
             <a type="button" class="btn btn-primary btn-sm" href="@Url.ActionLink("CarParts", "Cars", new {id = item.Id})">Parts</a>
             <a type="button" class="btn btn-secondary btn-sm" href="@Url.ActionLink("Edit", "Cars", new {id = item.Id})">Edit</a>
             <a type="button" class="btn btn-danger btn-sm" href="@Url.ActionLink("Delete", "Cars", new {id = item.Id})">Delete</a>
+            <a type="button" class="btn btn-info btn-sm" href="@Url.ActionLink("AddCar", "Garages", new {garageId = @ViewData["GarageId"], carid = item.Id})">Add car to your garage</a>
         </td>
     </tr>
 }
