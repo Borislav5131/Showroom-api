@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Showroom.Infrastructure.Data.Entities;
+using Showroom.Infrastructure.InitialSeed;
 
 namespace Showroom.Infrastructure.Data
 {
@@ -9,6 +10,7 @@ namespace Showroom.Infrastructure.Data
         public DbSet<Entities.Showroom> Showrooms { get; set; }
         public DbSet<Car> Cars { get; set; }
         public DbSet<Part> Parts { get; set; }
+        public DbSet<Garage> Garages { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -19,15 +21,8 @@ namespace Showroom.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>().HasData(
-                new User()
-                {
-                    Id = Guid.NewGuid(),
-                    Username = "admin",
-                    Password = "123456",
-                    FirstName = "ADMIN",
-                    LastName = "ADMINOV"
-                });
+            modelBuilder.ApplyConfiguration(new InitialDataConfiguration<User>(@"../Showroom.Infrastructure/InitialSeed/users.json"));
+            modelBuilder.ApplyConfiguration(new InitialDataConfiguration<Garage>(@"../Showroom.Infrastructure/InitialSeed/garages.json"));
         }
     }
 }

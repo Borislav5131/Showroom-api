@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Showroom.Infrastructure.Data;
 
@@ -11,9 +12,10 @@ using Showroom.Infrastructure.Data;
 namespace Showroom.Infrastructure.Migrations
 {
     [DbContext(typeof(ShowroomDbContext))]
-    partial class ShowroomDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221123191019_AddGarage2")]
+    partial class AddGarage2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -91,13 +93,6 @@ namespace Showroom.Infrastructure.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Garages");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("157d1dc4-1948-4a26-9891-8a5f5e76c9af"),
-                            UserId = new Guid("895aa13a-4eaf-4382-9d93-a646b9cf6929")
-                        });
                 });
 
             modelBuilder.Entity("Showroom.Infrastructure.Data.Entities.Part", b =>
@@ -162,9 +157,9 @@ namespace Showroom.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("895aa13a-4eaf-4382-9d93-a646b9cf6929"),
+                            Id = new Guid("f6501a46-a449-493a-bf61-9f33c81068c0"),
                             FirstName = "ADMIN",
-                            GarageId = new Guid("157d1dc4-1948-4a26-9891-8a5f5e76c9af"),
+                            GarageId = new Guid("00000000-0000-0000-0000-000000000000"),
                             LastName = "ADMINOV",
                             Password = "123456",
                             Username = "admin"

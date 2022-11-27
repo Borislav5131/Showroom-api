@@ -8,6 +8,8 @@ using Showroom.Filters;
 namespace Showroom.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
+    using Showroom.Extensions;
+    using Showroom.Infrastructure.Data.Entities;
 
     [AuthenticationFilter]
     public class CarsController : Controller
@@ -32,6 +34,7 @@ namespace Showroom.Controllers
 
             ViewData["ShowroomName"] = _showroomService.GetShowroomName(showroomId);
             ViewData["ShowroomId"] = showroomId;
+            ViewData["GarageId"] = HttpContext.Session.GetObject<User>("loggedUser").GarageId;
 
             return View(cars);
         }

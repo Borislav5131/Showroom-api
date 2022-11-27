@@ -17,6 +17,7 @@ builder.Services.AddTransient<ICarService, CarService>();
 builder.Services.AddTransient<IShowroomService, ShowroomService>();
 builder.Services.AddTransient<IPartService, PartService>();
 builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<IGarageService, GarageService>();
 
 builder.Services.AddRazorPages().AddNToastNotifyNoty(new NotyOptions
 {
