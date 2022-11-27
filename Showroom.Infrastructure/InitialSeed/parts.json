@@ -1,0 +1,30 @@
+﻿[
+  {
+    "Id": "96A599E5-7B14-4101-B401-13901ACA2F2B",
+    "Name": "Mirrors"
+  },
+  {
+    "Id": "7E5A5B49-9C51-48E7-B23C-19101EB2A52C",
+    "Name": "Wheels"
+  },
+  {
+    "Id": "7169DF2B-5FE6-4E90-BA8B-5A8E038D1870",
+    "Name": "Engine"
+  },
+  {
+    "Id": "62BF2CDF-02A8-446B-8861-5FA1ACDE7F75",
+    "Name": "Sport Seats"
+  },
+  {
+    "Id": "536BF539-D078-48F6-BA64-61DA849F5BB4",
+    "Name": "Turbo"
+  },
+  {
+    "Id": "B767C631-8993-4911-810A-6E4A52FF014C",
+    "Name": "Battery"
+  },
+  {
+    "Id": "F5BA7635-EFB3-4B27-AEA5-D89F597047B6",
+    "Name": "Tyres"
+  }
+]
