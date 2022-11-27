@@ -21,10 +21,7 @@ namespace Showroom.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new InitialDataConfiguration<Car>(@"../Showroom.Infrastructure/InitialSeed/cars.json"));
             modelBuilder.ApplyConfiguration(new InitialDataConfiguration<Garage>(@"../Showroom.Infrastructure/InitialSeed/garages.json"));
-            modelBuilder.ApplyConfiguration(new InitialDataConfiguration<Part>(@"../Showroom.Infrastructure/InitialSeed/parts.json"));
-            modelBuilder.ApplyConfiguration(new InitialDataConfiguration<Entities.Showroom>(@"../Showroom.Infrastructure/InitialSeed/showrooms.json"));
             modelBuilder.ApplyConfiguration(new InitialDataConfiguration<User>(@"../Showroom.Infrastructure/InitialSeed/users.json"));
         }
     }
